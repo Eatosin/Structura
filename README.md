@@ -17,15 +17,12 @@
 
 ---
 
-## ⚡ The Problem: The "Unstructured" Nightmare
-Data engineering teams spend **40% of their time** cleaning messy inputs.
-*   **Regex is brittle:** One format change breaks the pipeline.
-*   **LLMs hallucinate:** Standard chatbots return invalid JSON or extra conversational fluff.
-*   **APIs crash:** Missing fields cause `KeyError` in production.
+## ⚡ The Problem: "Data Chaos"
+AI models usually output messy text. If you ask GPT for JSON, it might give you `json` markdown blocks, extra commentary, or missing fields. This breaks downstream applications.
 
-## 🧠 The Solution: Type-Safe Intelligence
-**Structura** is not a chatbot. It is a deterministic data extraction engine.
-It leverages **PydanticAI** to enforce strict schema validation *during* the generation process. If the AI generates invalid data, the framework catches it, feeds the error back to the LLM, and forces a self-correction loop—guaranteeing 100% valid JSON output.
+## 🧠 The Solution: Type-Safe Generation
+**Structura** is a deterministic extraction engine.
+It uses **PydanticAI** to enforce strict schema validation *during* the generation process. If the AI makes a mistake, the framework catches it and auto-corrects before the user ever sees it.
 
 > *"Stop asking the AI to 'be careful'. Force it to be correct."*
 
