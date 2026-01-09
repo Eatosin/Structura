@@ -1,42 +1,56 @@
 from fasthtml.common import *
-from app.components import Layout, InputForm, ResultDisplay
+from agents.extractor import process_data
+from app.components import PageLayout, HeroSection, ExtractionForm, SuccessDisplay, ErrorDisplay, LoadingIndicator
+import json
 
-app, rt = fast_app()
+# Initialize App
+app, rt = fast_app(
+    hdrs=(picolink,) 
+)
 
 @rt('/')
 def get():
-    return Layout(
+    """Renders the Home Page"""
+    return PageLayout(
         "Structura | AI Data Architect",
-        Div(
-            InputForm(),
-            Br(),
-            Div(id="result-area") # The target for HTMX
-        )
+        [
+            HeroSection(),
+            ExtractionForm(),
+            LoadingIndicator(),
+            Div(id="result-area") # Target for HTMX results
+        ]
     )
 
 @rt('/extract')
 async def post(text_input: str, schema_type: str):
+    """
+    Handles the HTMX POST request.
+    Returns ONLY the result component (HTML snippet), not the full page.
+    """
     if not text_input:
-        return ResultDisplay(error="Please provide input text.")
-
-    # --- AGENT CONNECTION ---
+        return ErrorDisplay("Please provide input text to analyze.")
+    
     try:
-        # TODO: Connect to PydanticAI Agent here
-        # real_data = await process_data(text_input, schema_type)
+        # 1. Call the PydanticAI Agent
+        data = await process_data(text_input, schema_type)
         
-        # Mock Response to prove UI works
-        import json
-        mock_data = {
-            "status": "success", 
-            "schema": schema_type, 
-            "extracted_data": "Agent logic coming in Batch 3"
-        }
-        json_str = json.dumps(mock_data, indent=2)
+        # 2. Check for Agent-level errors
+        if isinstance(data, dict) and "error" in data:
+            return ErrorDisplay(f"Agent Error: {data['error']}")
         
-        return ResultDisplay(json_data=json_str)
+        # 3. Serialize Pydantic Model to JSON
+        # Robust check: if it's already a dict/list, dump it; if it's a Pydantic model, use model_dump_json
+        if hasattr(data, 'model_dump_json'):
+            json_str = data.model_dump_json(indent=2)
+        else:
+            json_str = json.dumps(data, indent=2)
+        
+        # 4. Return Success Component
+        return SuccessDisplay(json_str)
         
     except Exception as e:
-        return ResultDisplay(error=str(e))
+        # 5. Handle System Crashes
+        return ErrorDisplay(f"System Critical: {str(e)}")
 
-# Expose 'app' for the runner
+# Expose app for Uvicorn
 target = app
