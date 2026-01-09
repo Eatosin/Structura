@@ -1,9 +1,5 @@
 import os
-import nest_asyncio
 from dotenv import load_dotenv
-
-# Fix for nested event loops (Crucial for PydanticAI in some envs)
-nest_asyncio.apply()
 
 # Load Env
 load_dotenv()
