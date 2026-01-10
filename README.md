@@ -1,4 +1,10 @@
 <div align="center">
+<!-- HERO GIF (Clickable) -->
+<a href="https://huggingface.co/spaces/EATosin/Structura">
+  <img src="assets/Structura_hero.jpg" width="100%" alt="structura hero" style="border-radius: 8px; box-shadow: 0px 4px 12px rgba(0,0,0,0.3); border: 1px solid #30363d;">
+</a>
+
+<br/><br/>
 
 # 🛡️ Structura
 ### *The Unbreakable AI Data Architect*
