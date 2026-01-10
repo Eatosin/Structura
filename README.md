@@ -151,7 +151,7 @@ docker run -p 7860:7860 --env-file .env structura
 *Senior AI Engineer & Physicist*
 
 *   **Portfolio:** [GitHub](https://github.com/eatosin)
-*   **Connect:** [LinkedIn](https://www.linkedin.com/in/owadokun-tosin-tobi/)
+*   **Connect:** [LinkedIn](https://www.linkedin.com/in/owadokun-tosin-tobi-6159091a3)
 
 ---
-*Built with the Lexpertz R&D 2026 Stack.*
+*Built with the Lexpertz AI R&D 2026 Stack.*
