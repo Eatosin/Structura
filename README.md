@@ -1,5 +1,5 @@
 <div align="center">
-<!-- HERO GIF (Clickable) -->
+<!-- HERO HERO (Clickable) -->
 <a href="https://huggingface.co/spaces/EATosin/Structura">
   <img src="assets/Structura_hero.jpg" width="100%" alt="structura hero" style="border-radius: 8px; box-shadow: 0px 4px 12px rgba(0,0,0,0.3); border: 1px solid #30363d;">
 </a>
@@ -17,7 +17,12 @@
 
 [View Live Demo](https://huggingface.co/spaces/EATosin/Structura) • [System Architecture](#-system-architecture) • [Deploy Now](#-deployment)
 
-<img src="https://via.placeholder.com/1200x500/0f0f23/00E5FF?text=Structura:+Turning+Chaos+into+JSON" alt="Structura AI Dashboard" width="100%" style="border-radius: 10px; border: 1px solid #333;">
+<!-- HERO OUTPUT (Clickable) -->
+<a href="https://huggingface.co/spaces/EATosin/Structura">
+  <img src="assets/Structura_output.jpg" width="100%" alt="Structura AI dashboard Demo" style="border-radius: 8px; box-shadow: 0px 4px 12px rgba(0,0,0,0.3); border: 1px solid #30363d;">
+</a>
+
+<br/><br/>
 
 </div>
 
